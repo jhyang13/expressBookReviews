@@ -132,5 +132,89 @@ public_users.get('/review/:isbn',function (req, res) {
   }
 });
 
+//Task-10-13 common function
+// Function to fetch book list using Promise callbacks
+function getBookListWithPromise(url) {
+  return new Promise((resolve, reject) => {
+    axios.get(url)
+      .then(response => resolve(response.data))
+      .catch(error => reject(error));
+  });
+}
+
+//Task-10 With Promise
+public_users.get('/promise', function (req, res) {
+  try {
+    getBookListWithPromise('http://localhost:5000/') 
+      .then(bookList => {
+        res.json(bookList);
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).json({ message: "Error retrieving book list" });
+      });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Unexpected error" });
+  }
+});
+
+// Task-11 With Promise
+public_users.get('/promise/isbn/:isbn', function (req, res) {
+  try {
+    const requestedIsbn = req.params.isbn;
+    getBookListWithPromise("http://localhost:5000/isbn/" + requestedIsbn) 
+      .then(book => {
+        res.json(book);
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).json({ message: "Error retrieving book details" });
+      });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Unexpected error" });
+  }
+});
+
+// Task-12 With Promise
+public_users.get('/promise/author/:author', function (req, res) {
+  try {
+    const requestedAuthor = req.params.author;
+    getBookListWithPromise("http://localhost:5000/author/" + requestedAuthor) 
+      .then(book => {
+        res.json(book);
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).json({ message: "Error retrieving book details" });
+      });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Unexpected error" });
+  }
+});
+
+// Task-13 With Promise
+public_users.get('/promise/title/:title', function (req, res) {
+  try {
+    const requestedTitle = req.params.title;
+    getBookListWithPromise("http://localhost:5000/title/" + requestedTitle) 
+      .then(book => {
+        res.json(book);
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).json({ message: "Error retrieving book details" });
+      });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Unexpected error" });
+  }
+});
+
 
 module.exports.general = public_users;
+
+
+
