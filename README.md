@@ -29,4 +29,6 @@ Note: This course requires knowledge of JavaScript and Git.
 
 ## Final Project: Book Review Application
 
+In this module, you will complete two related projects: a practice project and a final project. The practice project walks you through code that performs CRUD operations for given user details on an Express server using session and JWT authentication and then tests the code using Postman. For the final project, you assume the role of a back-end developer working on a server-side application that stores, retrieves, and manages book ratings and reviews. You will submit screenshots of your application, and then your peers will review the project based on a rubric provided. You will also be expected to review two of your peer’s projects.
+
 **Test the output on Postman:** [https://jhyang13.github.io/e-plantShopping/](https://web.postman.co/)
